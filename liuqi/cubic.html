@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="charset" content="utf-8" />
+  <style type="text/css">
+    .scene {
+      perspective: 800px;/*当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。*/
+    }
+
+    .cube {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      transform-style: preserve-3d; /*使被转换的子元素保留其 3D 转换：*/
+      transform: rotateX(42deg);
+      transform:translateZ(-100px);
+    }
+
+    .side {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 1px dashed #999;
+    }
+
+    .back {
+      transform: translateZ(-100px) rotateX(180deg);
+    }
+
+    .left {
+      transform: translateX(-100px) rotateY(90deg);
+    }
+
+    .right {
+      transform: translateX(100px) rotateY(90deg);
+    }
+
+    .top {
+      transform: translateY(-100px) rotateX(90deg);
+    }
+
+    .bottom {
+      transform: translateY(100px) rotateX(270deg);
+    }
+
+    .front {
+      transform: translateZ(100px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scene">
+    <div class="cube">
+      <div class="side back"></div>
+      <div class="side left"></div>
+      <div class="side right"></div>
+      <div class="side top"></div>
+      <div class="side bottom"></div>
+      <div class="side front"></div>
+    </div>
+  </div>
+</body>
+
+</html>
