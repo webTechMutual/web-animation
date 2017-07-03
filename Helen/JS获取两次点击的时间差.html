@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js获取一个按钮的两次点击的时间差</title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+</head>
+<body>
+	<button type="button" id="getTime">click me</button>
+	<p>上一次点击的时间：<em id="prevText"></em></p>
+	<p>当前点击的时间：<em id="nowText"></em></p>
+	<p>两次点击的时间差：<em id="difference"></em></p>
+	<script type="text/javascript">
+		/* 感谢Qin大神给予的技术指导 */
+		var prevTime = new Date();//上一次点击的时间,
+		$("#getTime").on('click',function(){
+			var now = new Date();
+			var s1 = prevTime.getTime(),
+				s2 = now.getTime();
+			var total = (s2 - s1)/1000;
+
+			var day = parseInt(total / (24*60*60));//计算整天天数
+			var afterDay = total - day*24*60*60; // 取出算出天数后剩余的秒数
+
+			var hour = parseInt(afterDay/(60*90)); //计算整数小时数
+			var afterHour = total - day*24*60*60 - hour*60*60; // 取出算出小时数后剩余的秒数
+
+			var min = parseInt(afterHour/60); // 计算整数分
+			var afterMin = total - day*24*60*60 - hour*60*60 - min*60; // 取出算出分数后剩余的秒数
+
+			var second = parseInt(afterMin);// 获取秒数
+
+			if(now != prevTime){
+				//上一次点击的时间
+				$("#prevText").text(prevTime);
+			}
+			prevTime = now; //重新刷新上一次的点击时间
+			$("#nowText").text(now);
+			$("#difference").text(day+"天"+hour+"时"+min+"分"+second);
+			console.log(min);
+
+			if(min > 5){
+				// your code
+				console.log("符合要求标准，开始执行...");
+			}else{
+				console.log("不符合要求，跳过，重新刷新时间开始计时..");
+			}
+		});
+	</script>
+</body>
+</html>
