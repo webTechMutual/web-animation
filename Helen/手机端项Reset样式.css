@@ -1,0 +1,77 @@
+@charset "utf-8";
+
+/* ==================================== */
+/* 格式化样式标签、基础类型样式			*/
+/* Author:			Helen 		        */
+/* Copyright:		www.hufu.so 	    */
+/* Create Date:		         	        */
+/* Retrofit Date:	2017-7-3   		    */
+/* ==================================== */
+
+/*==== 多分辨率设定rem设定 ====*/
+html { font-size : 20px; }
+
+/* ==== Note3 ==== */
+@media only screen and (min-width: 360px) {
+	html { font-size: 22px !important; }
+}
+
+/* ==== iPhone6 ==== */
+@media only screen and (min-width: 376px) {
+	html { font-size: 23px !important; }
+}
+
+/* ==== iPhone6 plus ==== */
+@media only screen and (min-width: 414px) {
+	html { font-size: 25px !important; }
+}
+
+/* ==== big Resolution ==== */
+@media only screen and (min-width: 641px) {
+	html { font-size: 25px !important; }
+}
+
+
+html { -ms-touch-action: none;}
+body { font-family: Heiti, Heiti SC, DroidSans, DroidSansFallback, Arial, "Microsoft YaHei"; background-color: #f5f5f5; }
+input { font-family: Arial, "Microsoft YaHei", sans-serif; }
+a { text-decoration: none;  -webkit-touch-callout: none;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, span, a { margin: 0; padding: 0 }
+table { border-collapse: collapse; border-spacing: 0 }
+fieldset, img, iframe { border: 0 }
+:focus { outline: 0 }
+i, address, caption, cite, code, dfn, em, strong, th, var { font-style: normal }
+ol, ul { list-style: none }
+li { list-style: none }
+caption, th { text-align: left }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal }
+blockquote:before, blockquote:after, q:before, q:after { content: '' }
+abbr, acronym { border: 0; font-variant: normal }
+img { vertical-align: top; border: none; }
+input, textarea { -webkit-user-select: text; -ms-user-select: text; user-select: text; -webkit-appearance: none; }
+input:focus, select:focus, textarea:focus, button:focus { outline: none; }
+input[type="text"], input[type="password"], input[type="search"], input[type="tel"], input[type="number"], input[type="email"], input[type="url"], textarea { -webkit-appearance: none; border: 1px solid; border-radius: 0; }
+input[type="number"]::-webkit-inner-spin-button {
+-webkit-appearance:none;
+}
+em, i { font-style: normal; }
+li { list-style: none; }
+input[type="checkbox"] { position: relative; width: 0.75rem; height: 0.75rem; background-color: #F5F5F5; border: 0.05rem solid #CCC; -webkit-border-radius: 50%; border-radius: 50%; vertical-align: middle; }
+input[type="checkbox"]:checked { border-color: #ED5564; background-color: #ED5564; }
+input[type="checkbox"]:checked:after { content: ''; position: absolute; left: 0.1rem; top: 0.14rem; width: 0.4rem; height: 0.2rem; border-left: 0.065rem solid #fff; border-bottom: 0.065rem solid #fff; -webkit-transform: rotate(-45deg); -ms-transform: rotate(-45deg); transform: rotate(-45deg); }
+
+
+/*==== clear float ====*/
+.clearfix { zoom: 1 }
+.fl {float: left;}
+.fr{float: right;}
+.clearfix:after { display: block; clear: both; content: '\20' }
+:not(input) { -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-touch-callout: none; -webkit-text-size-adjust: none; }
+
+/*==== iconFont ====*/
+@font-face {font-family: "imooc-icon";src: url(../fonts/icomoon.eot);src: url(../fonts/icomoon.eot?#iefix) format("embedded-opentype"), url(../fonts/icomoon.svg) format("svg"), url(../fonts/icomoon.ttf) format("truetype"), url(../fonts/icomoon.woff) format("woff");font-weight: normal;font-style: normal;/*IE9 兼容模式*/}
+.ico {font-family: "imooc-icon";font-weight: normal;font-style: normal;vertical-align: top;-webkit-font-smoothing: antialiased;/*抗拒尺*/-moz-osx-font-smoothing: grayscale;/*抗拒尺*/}
+
+/* ==== show hide ==== */
+.hide{display: none !important;}
+.show{display: block !important;}
