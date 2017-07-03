@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航跟随效果</title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+	<style type="text/css">
+		*{margin:0;padding: 0;list-style: none;}
+		.orderForm_Nav{height: 35px;line-height: 35px;border-bottom: 1px solid #ccc;position: relative;-index: 1;}
+        .orderForm_Nav li{float: left;ont-size: 18px;width: 120px;font-weight: 500;text-align: center;position: relative;z-index: 1;}
+        .orderForm_Nav li.active a{color: #ff5b57;}
+        .orderForm_Nav li.recycleBin{float: right;}
+        .orderForm_Nav .line{width: 120px;border-top: 2px solid #ff5b57;position: absolute;bottom: -1px;left: 0px;}
+	</style>
+</head>
+<body>
+	<div class="orderForm_Nav">
+	  <ul>
+	    <li class="active"><a href="javascript:;">所有订单</a></li>
+	    <li class=""><a href="">待付款</a></li>
+	    <li><a href="javascript:;">待发货</a></li>
+	    <li><a href="javascript:;">待收货</a></li>
+	    <li><a href="javascript:;">待评价</a></li>
+	    <li class="recycleBin"><a href="javascript:;">订单回收站</a></li>
+	  </ul>
+	  <div class="line"></div>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+		  navSlide();
+		});
+		var navSlide = function(){
+			var active = $(".orderForm_Nav ul li.active");
+			var line = $(".line");
+			var item_width = active.outerWidth();
+			var left = active.position().left;
+			line.css({'width':item_width,'margin-left':left});
+			$(".orderForm_Nav ul li").bind({
+				mouseover:function(){
+					var item_width = $(this).outerWidth();
+					var position_left = $(this).position().left;
+					line.stop().animate({
+						'width':item_width,
+						'margin-left':position_left
+					},800, 'easeOutElastic');
+				},
+				mouseout:function(){
+					var item_width = $(this).outerWidth();
+					var lineLeft = $("li.active").position().left;
+					line.stop().animate({
+						'width':item_width,
+						'margin-left':lineLeft
+					},800, 'easeOutElastic');
+				}
+			});
+		}
+	</script>
+</body>
+</html>

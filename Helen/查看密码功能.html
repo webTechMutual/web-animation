@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>if else</title>
+  <style type="text/css">
+  *{margin:0;padding:0;}
+  .PassWordBox{width:150px;height:30px;border:1px solid #ddd;position:relative;margin:30px 30px;}
+  .pas{width:150px;height:30px;position:absolute;top:0;left:0;z-index:2;}
+  .show{width:150px;height:30px;position:absolute;top:0;left:0;z-index:1;}
+  </style>
+ </head>
+ <body>
+	<div class="PassWordBox">
+		<input type="password" class="pas" id="num" value="" />
+		<input type="text" class="show" id="show" value="" />
+	</div>
+	<button type="button" id="btn">show password</button>
+	<script type="text/javascript">
+		window.onload = function(){
+			 var num = document.getElementById('num');
+			 var show = document.getElementById('show');
+			 var btn = document.getElementById('btn');
+			 var monitor = 1;
+			 btn.onclick = function(){
+				show.value = num.value;
+				if(num.value == ""){
+					alert("请输入密码");
+				}else if(monitor == 1){
+					show.style.zIndex = "3";
+					return monitor = 0;
+				}else{
+					show.style.zIndex = "1";
+					return monitor = 1;
+				}
+			 }
+		}
+	</script>
+ </body>
+</html>
