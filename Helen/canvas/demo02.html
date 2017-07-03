@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas画多边形</title>
+</head>
+<body>
+	<canvas id="canvas" style="border:1px solid #ddd; margin:50px auto;">您的浏览器版本太低，不支持canvas，请升级浏览器</canvas>
+	<script type="text/javascript">
+		//定义一个变量数组，用来存储每个多边形的绘值状态
+		var tangram = [
+						{p:[{x:0, y:0}, {x:800, y:0}, {x:400, y:400}],color:"#caff67"},
+						{p:[{x:0, y:0}, {x:300, y:400}, {x:0, y:800}],color:"#67becf"},
+						{p:[{x:0, y:0}, {x:300, y:400}, {x:400, y:400}],color:"green"},
+						{p:[{x:0, y:800}, {x:300, y:400}, {x:400, y:400}],color:"blue"},
+						{p:[{x:800, y:0}, {x:800, y:400}, {x:600, y:600}, {x:600, y:200}],color:"#ef3d61"},
+						{p:[{x:600, y:200}, {x:600, y:600}, {x:400, y:400}],color:"#f9f51a"},
+						{p:[{x:400, y:400}, {x:600, y:600}, {x:400, y:800}, {x:200, y:600}],color:"#a594c0"},
+						{p:[{x:200, y:600}, {x:400, y:800}, {x:0, y:800}],color:"#fa8ecc"},
+						{p:[{x:800, y:400}, {x:800, y:800}, {x:400, y:800}],color:"#f6ca29"}
+					  ]
+
+		window.onload = function(){
+			//获取canvas的ID
+			var canvas = document.getElementById('canvas');
+			//设置canvas的宽 高
+			canvas.width = '800';
+			canvas.height = '800';
+			//判断当前浏览器是否支持canvas
+			if ( canvas.getContext("2d") ) {
+				var context = canvas.getContext("2d");
+			} else {
+				alert('当前您的浏览器不支持canvas，请您更换或者是升级浏览器版本');
+			}
+
+			for (var i = 0; i < tangram.length; i++) {
+				draw(tangram[i], context);
+			}
+
+			function draw( piece, ctx ){
+				ctx.beginPath();
+				ctx.moveTo(piece.p[0].x, piece.p[0].y);
+				for (var i = 1; i < piece.p.length; i++) {
+					ctx.lineTo(piece.p[i].x, piece.p[i].y);
+				}
+				ctx.closePath();
+
+				ctx.fillStyle = piece.color;
+				ctx.fill();
+
+				// ctx.strokeStyle = "#D22147";
+				// ctx.lineWidth = 2;
+				// ctx.stroke();
+			}
+
+		}
+	</script>
+</body>
+</html>

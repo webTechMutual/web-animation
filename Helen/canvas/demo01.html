@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas绘制圆形</title>
+</head>
+<body>
+	<canvas id="canvas" style="border:1px solid #ddd; margin:50px auto;">您的浏览器版本太低，不支持canvas</canvas>
+	<script type="text/javascript">
+		window.onload = function(){
+			var canvas = document.getElementById('canvas'); 
+
+			canvas.width = 1024;
+			canvas.height = 768;
+
+			var context = canvas.getContext('2d'); //创建画布
+
+			context.lineWidth = 5; //边框宽度
+			context.strokeStyle = "#d22147"; // 颜色
+			context.arc(300, 300, 200, 0, 1.5*Math.PI);//context.arc( 圆心的X坐标 , 圆心的Y坐标 , 圆的半径 , 起点坐标 , 终点坐标 )
+			context.stroke();
+		} 
+	</script>
+</body>
+</html>

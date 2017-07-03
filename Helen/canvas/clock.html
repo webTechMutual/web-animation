@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas 画时钟</title>
+</head>
+<body>
+	<canvas width="1000" height="1000" id="clockCanvas">您的浏览器版本太低，不支持显示时钟的canvas标签</canvas>
+	<script>
+		var clock=document.getElementById('clockCanvas');
+		var ctx=clock.getContext("2d");
+		function drawClock(id){
+			//每次清空画布
+			ctx.clearRect(0,0,1000,1000);
+			//获取当前的系统时间
+			var nowTime=new Date();
+			var h = nowTime.getHours();//时
+			var m = nowTime.getMinutes();//分
+			var s = nowTime.getSeconds();//秒
+
+			//绘制文字，显示系统当前时间
+			ctx.save();
+			ctx.translate(0,500);
+			ctx.fillStyle = "#ff0";
+			ctx.strokeStyle = "#eee";
+			ctx.font = "bold 50px 微软雅黑";
+			ctx.strokeText("当前时间为:"+h+"时"+m+"分"+s+"秒", 100, 100);
+			ctx.fillText("当前时间为:"+h+"时"+m+"分"+s+"秒", 100, 100);
+			ctx.restore();
+
+			//计算：满60分加一小时
+			h = h + m/60;
+			//计算：将24小时制转成12小时制
+			h = h>12?h-12:h;
+
+			//画表盘
+			ctx.beginPath();
+			ctx.lineWidth = 10;
+			ctx.strokeStyle = "#ff00ff";
+			ctx.arc(300,300,200,0,360,false);
+			ctx.stroke();
+			ctx.closePath();
+
+			/*画刻度盘*/
+			//时刻度
+			for(var i=0;i<12;i++)
+			{
+				ctx.save();
+				//将七点定位到圆心
+				ctx.translate(300,300);
+				//设置刻度样式
+				ctx.lineWidth = 7;
+				ctx.strokeStyle = "#999";
+				//设置旋转角度
+				ctx.rotate(i*30*Math.PI/180);
+
+				ctx.beginPath();
+				ctx.moveTo(0,-170);
+				ctx.lineTo(0,-190);
+
+				//画刻度线
+				ctx.stroke();
+				ctx.restore();
+			}
+			//分刻度
+			for(var j=0;j<60;j++)
+			{
+				ctx.save();
+				//设置起点坐标
+				ctx.translate(300,300);
+				ctx.lineWidth = 5;
+				ctx.strokeStyle = "#999";
+				//设置旋转角度
+				ctx.rotate(j*6*Math.PI/180);
+				ctx.beginPath();
+				ctx.moveTo(0,-180);
+				ctx.lineTo(0,-190);
+				ctx.closePath();
+				ctx.stroke();
+				ctx.restore();
+			}
+			//时针
+			ctx.save();
+			ctx.translate(300,300);
+			ctx.lineWidth = 7;
+			ctx.strokeStyle = "#000";
+			//设置小时的旋转角度，每转一次走30°
+			ctx.rotate(h*30*Math.PI/180);
+			ctx.beginPath();
+			ctx.moveTo(0,15);
+			ctx.lineTo(0,-120);
+			ctx.stroke();
+			ctx.closePath();
+			ctx.restore();
+
+			//分针
+			ctx.save();
+			ctx.translate(300,300);
+			ctx.rotate(m*6*Math.PI/180);
+			ctx.lineWidth = 5;
+			ctx.strokeStyle = "#000";
+			ctx.beginPath();
+			ctx.moveTo(0,20);
+			ctx.lineTo(0,-160);
+			ctx.stroke();
+			ctx.closePath();
+			ctx.restore();
+			
+			//秒针
+			ctx.save();
+			ctx.translate(300,300);
+			ctx.rotate(s*6*Math.PI/180);
+			ctx.lineWidth = 3;
+			ctx.strokeStyle = "#f00";
+			ctx.beginPath();
+			ctx.moveTo(0,25);
+			ctx.lineTo(0,-165);
+			ctx.stroke();
+			ctx.closePath();
+
+			//秒针圆心出一个小圆
+			ctx.fillStyle = "#999";
+			ctx.strokeStyle = "#f00";
+			ctx.beginPath();
+			ctx.arc(0,0,6,0,360,false);
+			ctx.fill();
+			ctx.stroke();
+			ctx.closePath();
+			
+			//秒针顶部一个小圆
+			ctx.beginPath();
+			ctx.arc(0,-140,6,0,360,false);
+			ctx.fill();
+			ctx.stroke();
+			ctx.closePath();
+			ctx.restore();
+		}
+		drawClock();
+		setInterval(drawClock, 1000);
+	</script>
+</body>
+</html>
