@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="charset" content="utf-8" />
+  <style type="text/css">
+    .grid{
+      display: grid;
+      grid-template-rows: 50px 100px;
+      /*grid-template-columns: 90px 50px*/
+      /*grid-template-columns: 1fr 1fr 2fr*/
+      grid-template-columns: 3rem 25% 1fr 2fr;
+      grid-row-gap: 5px;
+      grid-column-gap: 5px;
+    }
+    .grid > div {
+      background-color: #0ff;
+      /*border: 1px solid #fff;*/
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <p>
+    CSS Grid是一个强大的工具，它允许在Web上创建二维布局。通过display属性设置属性值为grid或inline-grid可以创建一个网格容器。网格容器中的所有子元素就会自动变成网格项目（grid item）。
+  </p>
+  <div class="grid">
+    <div>1</div>
+    <div>2</div>
+    <div>2</div>
+    <div>1</div>
+    <div>2</div>
+    <div>2</div>
+    <div>1</div>
+    <div>2</div>
+    <div>2</div>
+    <div>1</div>
+    <div>2</div>
+    <div>2</div>
+    <div>1</div>
+    <div>2</div>
+    <div>2</div>
+    <div>1</div>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
+  </div>
+</body>
+</html>
