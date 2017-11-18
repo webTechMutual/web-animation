@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>corner圆角布局</title>
+  <style type="text/css">
+    body {
+      background-color: #000;
+    }
+    .corner {
+      position: fixed;
+      width: 100px;
+      height: 100px;
+      background-color: #fff;
+      border-radius: 50%;
+      transition:width 2s, height 2s, left 2s, top 2s, right 2s, bottom 2s
+    }
+
+    .corner:hover{
+      width: 200px;
+      height: 200px;
+    }
+    .corner.left {
+      left: -50px;
+    }
+
+    .corner.left:hover{
+      left: -100px;
+    }
+
+    .corner.right {
+      right: -50px;
+    }
+
+    .corner.right:hover {
+      right: -100px;
+    }
+
+    .corner.top {
+      top: -50px;
+    }
+
+    .corner.top:hover {
+      top: -100px;
+    }
+
+    .corner.bottom {
+      bottom: -50px;
+    }
+    .corner.bottom:hover {
+      bottom: -100px;
+    }
+
+    .circle{
+      position: fixed;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #fff;
+      left: 50%;
+      top: 50%;
+      margin-left: -50px;
+      margin-top:-50px;
+      transition: width 2s, height 2s, margin 2s
+    }
+
+    .circle:hover{
+      width: 200px;
+      height: 200px;
+      margin-left: -100px;
+      margin-top:-100px;
+    }
+  </style>
+</head>
+<body>
+<div class="corner left top"></div>
+<div class="corner left bottom"></div>
+<div class="corner right top"></div>
+<div class="corner right bottom"></div>
+<div class="circle"></div>
+</body>
+<html>
